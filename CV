@@ -1,0 +1,41 @@
+zenity  --forms 
+        --title="CV OLUSTUR" \
+	--text="Bilgilerinizi giriniz." \
+	--separator="," \
+	--add-entry="Adınız" \
+        --add-entry="Soyadınız" \
+        --add-entry="Yasınız" \
+	--add-entry="Mailiniz" \
+        --add-entry="Askerlik Durumunuz" \
+        --add-entry="Hobileriniz" \
+        --add-entry="Bitirdiğiniz Bölüm" \
+        --add-entry="Sertifikalarınız" \
+        --add-entry="Yabancı Dil Durumunuz" \
+        --add-entry="Mezun oldugunuz üniversite" \
+	 --add-calendar="Dogum tarihinizi giriniz" >> addr.csv
+
+
+zenity --list \
+      --checklist \
+      --column "checkbox" \
+      --column "Cinsiyet" \
+      --column "Medeni Hal" \
+      FALSE Kadin Bekar \
+      FALSE Kadin Evli \
+      FALSE Erkek Bekar \
+      FALSE Erkek Evli \
+      
+     
+
+case $? in
+    0)
+        echo "CV niz olusturuldu.";;
+    1)
+        echo "CV olusturulamadı."
+	;;
+    -1)
+        echo "Beklenmeyen bir hata olustu."
+	;;
+esac
+
+ 
